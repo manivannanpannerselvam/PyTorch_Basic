@@ -67,19 +67,19 @@ import torch
 # # -----------------------------------------------------------------
 # print("--- 3. Indexing and slicing ---")
 
-m = torch.arange(1, 17).reshape(4, 4)  # 3x4 matrix, values 1..12
-print("Matrix:\n", m)
+# m = torch.arange(1, 17).reshape(4, 4)  # 3x4 matrix, values 1..12
+# print("Matrix:\n", m)
 
-# print("First row:", m[0])
+# print("First row:", m[2])
 # print("Last column:", m[:, -1])
-# print("Sub-block (rows 0-1, cols 1-2):\n", m[0:2, 1:3])
-# print("Single element (row 1, col 2):", m[1, 2].item())  # .item() -> plain Python number
+# print("Sub-block (rows 0-1, cols 1-2):\n", m[1:3, 0:4])
+# print("Single element (row 1, col 2):", m[0, 1].item())  # .item() -> plain Python number
 
 # print()
 
-# # -----------------------------------------------------------------
-# # 4. Reshaping — changing the "view" of the data without changing values
-# # -----------------------------------------------------------------
+# -----------------------------------------------------------------
+# 4. Reshaping — changing the "view" of the data without changing values
+# -----------------------------------------------------------------
 # print("--- 4. Reshaping ---")
 
 # v = torch.arange(6)
@@ -88,11 +88,20 @@ print("Matrix:\n", m)
 # reshaped = v.reshape(2, 3)
 # print("Reshaped to (2, 3):\n", reshaped)
 
+
+
+# v1 = torch.arange(9)
+# # Reshape into 3D -> same 6 values, one more level of nesting
+# reshaped_3d = v1.reshape(1, 3, 3)
+# print("Reshaped to (1, 2, 3):\n", reshaped_3d)
+
 # flattened = reshaped.flatten()
 # print("Flattened back:", flattened)
 
-# # -1 means "figure out this dimension automatically"
-# auto = v.reshape(3, -1)
+# -1 means "figure out this dimension automatically"
+# v1 = torch.arange(9)
+# auto = v1.reshape(3, -1)
+
 # print("Reshape with -1 -> (3, -1):\n", auto)
 
 # print()
@@ -102,14 +111,14 @@ print("Matrix:\n", m)
 # # -----------------------------------------------------------------
 # print("--- 5. NumPy interop ---")
 
-# import numpy as np
+import numpy as np
 
-# np_array = np.array([1, 2, 3])
-# from_numpy = torch.from_numpy(np_array)
-# print("Tensor from NumPy:", from_numpy)
+np_array = np.array([1, 2, 3])
+from_numpy = torch.from_numpy(np_array)
+print("Tensor from NumPy:", from_numpy)
 
-# back_to_numpy = from_numpy.numpy()
-# print("Back to NumPy:", back_to_numpy, type(back_to_numpy))
+back_to_numpy = from_numpy.numpy()
+print("Back to NumPy:", back_to_numpy, type(back_to_numpy))
 
 # print()
 # print("Done. Try editing values above and re-running to build intuition.")
