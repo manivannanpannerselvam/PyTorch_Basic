@@ -35,5 +35,25 @@ Check items off as we complete them. Nothing beyond the current topic is created
 - [ ] 21. End-to-end project combining the above
 
 ---
-**Environment:** `.venv` (Python 3.12) with `torch`, `torchvision`, `torchmetrics`, `matplotlib`, `numpy` installed.
-Activate with: `source .venv/bin/activate`
+## Environment setup (new machine)
+
+Requires Python 3.12 (PyTorch does not yet support very new Python versions like 3.14).
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate      # on Windows: .venv\Scripts\activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Verify it worked:
+```bash
+python -c "import torch; print(torch.__version__)"
+```
+
+Then run any lesson, e.g.:
+```bash
+python 01_tensors/tensors.py
+```
+
+`.venv/` itself is not committed to git (see `.gitignore`) — always recreate it from `requirements.txt` on each machine.
